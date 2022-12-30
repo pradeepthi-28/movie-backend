@@ -11,10 +11,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var app = express();
 
 //app.set('view engine', 'ejs');
-app.use(cors({
-    origin: "http://localhost:3000", // restrict calls to those this address
-    credentials: true,
-}));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -29,7 +26,7 @@ app.use(passport.session());
 
 
 //Connecting to MongoDB using mongoose
-mongoose.connect("mongodb+srv://pradeepthi:pradeepthi28@cluster0.xejendo.mongodb.net/firstdb?retryWrites=true&w=majority", {useNewUrlParser: true})
+mongoose.connect("mongodb+srv://pradeepthi:pradeepthi28@cluster0.xejendo.mongodb.net/firstdb?retryWrites=true&w=majority", {useNewUrlParser: true,useUnifiedTopology: true})
     .then(()=>{
         console.log("connected to db")
     });
